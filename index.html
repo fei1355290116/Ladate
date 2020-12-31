@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			p{
+				text-align: center;
+				padding: 100px;
+				color: #000;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<p></p>
+	</body>
+	<script type="text/javascript">
+		//结束时间
+		var begin=new Date("2020/01/25");
+		setInterval(fun,1000);
+		var p=document.getElementsByTagName("p")[0];
+		function fun(){
+			//当前时间
+			var cur=new Date();
+			//毫秒
+			var time=cur.getTime()-begin.getTime();
+			//转秒
+			var se=parseInt(time/1000);
+			//获得天数
+			var day=parseInt(se/3600/24);
+			//获得小时
+			var hour=parseInt(se/3600%24);
+			//获得分钟
+			var num=se-(day*24*60*60+hour*60*60)
+			var min=0;
+			if(num>0){
+				min=parseInt(num/60);
+			}
+			//获得秒
+			var nums=se-(day*24*60*60+hour*60*60+min*60)
+			var sem=0
+			if(nums>0){
+				sem=parseInt(nums);
+			}
+			//两位数
+			day<10?day="0"+day:day;
+			hour<10?hour="0"+hour:hour;
+			min<10?min="0"+min:min;
+			sem<10?sem="0"+sem:sem;
+			//输出
+			p.innerHTML=day+"天"+hour+"时"+min+"分"+sem+"秒"
+		}
+	</script>
+</html>
